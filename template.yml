@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Boilerplate template file
+
+Resources:
+    IdealistaScraper:
+        Type: AWS::Serverless::Function
+        Properties:
+            Runtime: nodejs20.x
+            Handler: index.handler
+            CodeUri: dist/
+            Description: Boilerplate lambda function
+            Timeout: 10
+            MemorySize: 128
+            Events:
+                Schedule:
+                    Type: Schedule
+                    Properties:
+                        Schedule: cron(0 6 * * ? *)
